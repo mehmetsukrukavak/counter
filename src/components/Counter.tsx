@@ -1,5 +1,10 @@
 import {useState} from "react";
 import "../index.css";
+import Step from "./Step";
+import Count from "./Count";
+import Result from "./Result";
+
+
 
 export default function Counter() {
     const [step, setStep] = useState(1);
@@ -7,7 +12,6 @@ export default function Counter() {
 
     const today = new Date();
     today.setDate(today.getDate() + count);
-
 
     function handleCountIncrease() {
         setCount(count => count + step);
@@ -27,33 +31,19 @@ export default function Counter() {
 
     return (
         <div className="counter">
-            <div>
-                <button className="btn" onClick={handleStepDecrease}>-</button>
-                <span> Count : {step} </span>
-                <button className="btn" onClick={handleStepIncrease}>+</button>
-            </div>
-            <div>
-                <button className="btn" onClick={handleCountDecrease}>-</button>
-                <span> Count : {count} </span>
-                <button className="btn" onClick={handleCountIncrease}>+</button>
-            </div>
 
-        {/*    <p>*/}
-        {/*<span>*/}
-        {/*  {count === 0*/}
-        {/*      ? "Today is "*/}
-        {/*      : count > 0*/}
-        {/*          ? `${count} days from today is `*/}
-        {/*          : `${Math.abs(count)} days ago was `}*/}
-        {/*</span>*/}
-        {/*        <span>{today.toDateString()}</span>*/}
-        {/*    </p>*/}
-            { count === 0 &&  <span>Today is { today.toDateString()} </span> }
-            { count > 0 &&  <span>{ count  } Days later is {today.toDateString()} </span> }
-            { count < 0 &&  <span>{ Math.abs(count) } Days ago was {today.toDateString()} </span> }
+            <Step
+                step={step}
+                handleStepIncrease={handleStepIncrease}
+                handleStepDecrease={handleStepDecrease}
+            />
+            <Count
+                count={count}
+                handleCountIncrease={handleCountIncrease}
+                handleCountDecrease={handleCountDecrease}
+            />
 
-
-
+           <Result count={count} today={today} />
         </div>
     );
 }
