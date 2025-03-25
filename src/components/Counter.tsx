@@ -38,22 +38,20 @@ export default function Counter() {
                 <button className="btn" onClick={handleCountIncrease}>+</button>
             </div>
 
-            <p>
-        <span>
-          {count === 0
-              ? "Today is "
-              : count > 0
-                  ? `${count} days from today is `
-                  : `${Math.abs(count)} days ago was `}
-        </span>
-                <span>{today.toDateString()}</span>
-            </p>
+        {/*    <p>*/}
+        {/*<span>*/}
+        {/*  {count === 0*/}
+        {/*      ? "Today is "*/}
+        {/*      : count > 0*/}
+        {/*          ? `${count} days from today is `*/}
+        {/*          : `${Math.abs(count)} days ago was `}*/}
+        {/*</span>*/}
+        {/*        <span>{today.toDateString()}</span>*/}
+        {/*    </p>*/}
+            { count === 0 &&  <span>Today is { today.toDateString()} </span> }
+            { count > 0 &&  <span>{ count  } Days later is {today.toDateString()} </span> }
+            { count < 0 &&  <span>{ Math.abs(count) } Days ago was {today.toDateString()} </span> }
 
-
-            {/*{ count === 0 &&  <span>Today is {new Date(new Date().setDate(new Date().getDate() + (count))).toLocaleDateString()} </span> }
-          { count > 0 &&  <span>{ count  } Days later  {new Date(new Date().setDate(new Date().getDate() + (count))).toLocaleDateString()} </span> }
-          { count < 0 &&  <span>{ count * -1 } Days before  {new Date(new Date().setDate(new Date().getDate() + (count))).toLocaleDateString()} </span> }
-*/}
 
 
         </div>
