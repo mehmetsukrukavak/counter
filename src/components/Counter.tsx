@@ -1,8 +1,9 @@
 import {useState} from "react";
 import "../index.css";
-import Step from "./Step";
+// import Step from "./Step";
 import Count from "./Count";
 import Result from "./Result";
+import Range from "./Range";
 
 
 
@@ -21,22 +22,27 @@ export default function Counter() {
         setCount(count => count - step);
     }
 
-    function handleStepIncrease() {
-        setStep(step => step + 1);
+    // function handleStepIncrease() {
+    //     setStep(step => step + 1);
+    // }
+    //
+    // function handleStepDecrease() {
+    //     setStep(step => step - 1);
+    // }
+    function handleSetStep(step: number) {
+        setStep(step);
     }
 
-    function handleStepDecrease() {
-        setStep(step => step - 1);
-    }
 
     return (
         <div className="counter">
 
-            <Step
+            <Range step={step} handleRange={handleSetStep} />
+            {/*<Step
                 step={step}
                 handleStepIncrease={handleStepIncrease}
                 handleStepDecrease={handleStepDecrease}
-            />
+            />*/}
             <Count
                 count={count}
                 handleCountIncrease={handleCountIncrease}
