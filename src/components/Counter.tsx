@@ -33,6 +33,15 @@ export default function Counter() {
         setStep(step);
     }
 
+    function handleCount(count: number) {
+        setCount(count);
+    }
+
+    function handleReset() {
+        setCount(0);
+        setStep(1);
+    }
+
 
     return (
         <div className="counter">
@@ -47,9 +56,14 @@ export default function Counter() {
                 count={count}
                 handleCountIncrease={handleCountIncrease}
                 handleCountDecrease={handleCountDecrease}
+                handleInput={handleCount}
             />
 
            <Result count={count} today={today} />
+            { (step !== 1 || count !== 0) &&
+                <button className="btn" onClick={handleReset}>Reset</button>
+            }
+
         </div>
     );
 }
